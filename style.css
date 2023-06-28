@@ -20,12 +20,13 @@ canvas {
 }
 
 #controlsContainer{
-    border: 1px red solid;
+    border: 1px rgb(0, 0, 0) solid;
     position: absolute;
     width: 200px;
     height: 100px;
-    top: 60%;
-    left: 60%;
+    top: 85%;
+    left: 50%;
+    display: block;
 }
 
 

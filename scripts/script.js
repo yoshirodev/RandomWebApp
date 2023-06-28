@@ -1,9 +1,11 @@
 
 var myGamePiece;
+var myObstacle;
 
 function startGame() {
     myGameArea.start();
-    myGamePiece = new component(30, 30, "red", 10, 120);
+    myGamePiece = new component(30, 30, "blue", 100, 120);
+    myObstacle = new component(100, 100, "red", 350, 300);
 }
 
 var myGameArea = {
@@ -36,13 +38,42 @@ function component(width, height, color, x, y) {
         this.x += this.speedX;
         this.y += this.speedY;
     }
+    this.crashWith = function(otherobj) {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = otherobj.x;
+        var otherright = otherobj.x + (otherobj.width);
+        var othertop = otherobj.y;
+        var otherbottom = otherobj.y + (otherobj.height);
+        var crash = true;
+        if ((mybottom < othertop) ||
+        (mytop > otherbottom) ||
+        (myright < otherleft) ||
+        (myleft > otherright)) {
+        crash = false;
+        }
+        return crash;
+    }
 }
 
 function updateGameArea() {
+    if (myGamePiece.crashWith(myObstacle)) {
+        notify("Collided");
+    }
     myGameArea.clear();
     myGamePiece.newPos();
+    myObstacle.update();
     myGamePiece.update();
 }
+
+function SetNewDir(){
+    myGamePiece.x += result;
+    myGamePiece.y += result;
+}
+
+// Controls
 
 function moveup() {
     myGamePiece.speedY -= 1;
@@ -96,12 +127,6 @@ function timedComponent_experimental(){
     
     if (document.getElementById('timer').innerHTML >= "0:00"){
         const myTimeout = setTimeout(SetNewDir, 4000);
-    }
-
-    function SetNewDir(){
-        result = getRandomItem(directionPos)
-        myGamePiece.x += result;
-        myGamePiece.y += result;
     }
 
     function sleep(ms) {
