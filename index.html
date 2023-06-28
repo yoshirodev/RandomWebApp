@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Webapp</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body onload="startGame()">
+        <button id="DebugButton" onclick="showDebugConsole()">Show Debug Console</button>
+        <div id="debugContainer">
+            <h1 id="timer">0:00</h1>
+            <Button style="height: 20px;" onclick="TimerApp()"></Button>
+            <input id="inputTime" type="number" placeholder="input how many seconds">
+            <div id="alertContainer"></div>
+        </div>
+
+        <div id="controlsContainer">
+            <button style="left: 35%; top: 0%; position: absolute;" id="up" onclick="moveup()">UP</button>
+            <button style="left: 35%; bottom: 0%; position: absolute;" id="down" onclick="movedown()">DOWN</button>
+            <button style="top: 40%; left: 0%; position: absolute;" id="left" onclick="moveleft()">LEFT</button>
+            <button style="top: 40%; right: 0%; position: absolute;" id="right" onclick="moveright()">RIGHT</button>
+        </div>
+    </body>
+    <script src="scripts/uicontrols.js"></script>
+    <script src="scripts/script.js"></script>
+</html>
