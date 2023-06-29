@@ -1,14 +1,20 @@
 
-var myGamePiece;
-var myObstacle;
+let myGamePiece;
+let myObstacle1;
+let myObstacle2;
+let myObstacle3;
+let myObstacle4;
 
 function startGame() {
     myGameArea.start();
     myGamePiece = new component(30, 30, "blue", 100, 120);
-    myObstacle = new component(100, 100, "red", 350, 300);
+    myObstacle1 = new component(20, 580, "red", 670, 10);
+    myObstacle2 = new component(20, 580, "red", 10, 10);
+    myObstacle3 = new component(670, 20, "red", 10, 10);
+    myObstacle4 = new component(670, 20, "red", 10, 570);
 }
 
-var myGameArea = {
+let myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = 700;
@@ -39,15 +45,15 @@ function component(width, height, color, x, y) {
         this.y += this.speedY;
     }
     this.crashWith = function(otherobj) {
-        var myleft = this.x;
-        var myright = this.x + (this.width);
-        var mytop = this.y;
-        var mybottom = this.y + (this.height);
-        var otherleft = otherobj.x;
-        var otherright = otherobj.x + (otherobj.width);
-        var othertop = otherobj.y;
-        var otherbottom = otherobj.y + (otherobj.height);
-        var crash = true;
+        let myleft = this.x;
+        let myright = this.x + (this.width);
+        let mytop = this.y;
+        let mybottom = this.y + (this.height);
+        let otherleft = otherobj.x;
+        let otherright = otherobj.x + (otherobj.width);
+        let othertop = otherobj.y;
+        let otherbottom = otherobj.y + (otherobj.height);
+        let crash = true;
         if ((mybottom < othertop) ||
         (mytop > otherbottom) ||
         (myright < otherleft) ||
@@ -59,12 +65,15 @@ function component(width, height, color, x, y) {
 }
 
 function updateGameArea() {
-    if (myGamePiece.crashWith(myObstacle)) {
+    if (myGamePiece.crashWith(myObstacle1 || myObstacle2 || myObstacle3 || myObstacle4)) {
         notify("Collided");
     }
     myGameArea.clear();
     myGamePiece.newPos();
-    myObstacle.update();
+    myObstacle1.update();
+    myObstacle2.update();
+    myObstacle3.update();
+    myObstacle4.update();
     myGamePiece.update();
 }
 
