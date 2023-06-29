@@ -68,8 +68,11 @@ function updateGameArea() {
     if (myGamePiece.crashWith(myObstacle1 || myObstacle2 || myObstacle3 || myObstacle4)) {
         notify("Collided");
     }
+
     myGameArea.clear();
+
     myGamePiece.newPos();
+
     myObstacle1.update();
     myObstacle2.update();
     myObstacle3.update();
@@ -82,22 +85,43 @@ function SetNewDir(){
     myGamePiece.y += result;
 }
 
+function inputDebug(){
+    let debugInput = document.getElementById('inputTime').value;
+    switch(debugInput){
+        case "101":
+            // do some debug test
+            break;
+        case "102":
+            // do some debug test
+            break;
+        case "103":
+            // do some debug test
+            break;
+    }
+}
+
+
+
 // Controls
 
 function moveup() {
     myGamePiece.speedY -= 1;
+    notify(myGamePiece.speedY.toString());
 }
 
 function movedown() {
     myGamePiece.speedY += 1;
+    notify(myGamePiece.speedY.toString());
 }
 
 function moveleft() {
     myGamePiece.speedX -= 1;
+    notify(myGamePiece.speedX.toString());
 }
 
 function moveright() {
     myGamePiece.speedX += 1;
+    notify(myGamePiece.speedX.toString());
 }
 
 
