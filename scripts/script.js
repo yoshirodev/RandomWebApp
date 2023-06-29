@@ -140,8 +140,4 @@ function notify(notif){
     notifItem.classList.add("bot-message");
     notifItem.textContent = notif;
     notifList.appendChild(notifItem);
-
-    if(notifList.childElementCount > 10){
-        notifList.removeChild;
-    }
 }
