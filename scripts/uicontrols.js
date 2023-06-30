@@ -1,6 +1,6 @@
 
 function showDebugConsole(){
-  var x = document.getElementById("debugContainer");
+  const x = document.getElementById("debugContainer");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
@@ -9,7 +9,16 @@ function showDebugConsole(){
 }
 
 function showControls(){
-  var x = document.getElementById("controlsContainer");
+  const x = document.getElementById("controlsContainer");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function showCoordnates(){
+  const x = document.getElementById("coordsDebug");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {

@@ -29,6 +29,13 @@ canvas {
     display: block;
 }
 
+#coordsDebug{
+    position: absolute;
+    left: 45%;
+    top: 0;
+    border: 2px black solid;
+}
+
 
 @media only screen and (min-width: 768px){
 

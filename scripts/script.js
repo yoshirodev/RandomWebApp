@@ -64,24 +64,30 @@ function component(width, height, color, x, y) {
     }
 }
 
-function updateGameArea() {
+function obstacleCheck(){
     if (myGamePiece.crashWith(myObstacle1)) {
-        notify("Collided with Right");
+        notify("0");
         myGamePiece.speedX -= 1;
-        
     }
     if (myGamePiece.crashWith(myObstacle2)) {
-        notify("Collided with Left");
+        notify("1");
         myGamePiece.speedX += 1;
     }
     if (myGamePiece.crashWith(myObstacle3)) {
-        notify("Collided with Top");
+        notify("0");
         myGamePiece.speedY += 1;
     }
     if (myGamePiece.crashWith(myObstacle4)) {
-        notify("Collided with Bottom");
+        notify("1");
         myGamePiece.speedY -= 1;
     }
+}
+
+function updateGameArea() {
+
+    document.getElementById('coordsDebug').innerHTML = "Canvas Coordinates " + "X: " + myGamePiece.x.toString() + " Y: " + myGamePiece.y.toString();
+
+    obstacleCheck();
 
     myGameArea.clear();
 
