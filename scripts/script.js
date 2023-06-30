@@ -65,8 +65,22 @@ function component(width, height, color, x, y) {
 }
 
 function updateGameArea() {
-    if (myGamePiece.crashWith(myObstacle1 || myObstacle2 || myObstacle3 || myObstacle4)) {
-        notify("Collided");
+    if (myGamePiece.crashWith(myObstacle1)) {
+        notify("Collided with Right");
+        myGamePiece.speedX -= 1;
+        
+    }
+    if (myGamePiece.crashWith(myObstacle2)) {
+        notify("Collided with Left");
+        myGamePiece.speedX += 1;
+    }
+    if (myGamePiece.crashWith(myObstacle3)) {
+        notify("Collided with Top");
+        myGamePiece.speedY += 1;
+    }
+    if (myGamePiece.crashWith(myObstacle4)) {
+        notify("Collided with Bottom");
+        myGamePiece.speedY -= 1;
     }
 
     myGameArea.clear();
